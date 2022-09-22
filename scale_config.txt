@@ -1,0 +1,17 @@
+Major;2;2;1;2;2;2;1
+Dorian;2;1;2;2;2;1;2
+Phrygian;1;2;2;2;1;2;2
+Lydian;2;2;2;1;2;2;1
+Mixolydian;2;2;1;2;2;1;2
+Minor;2;1;2;2;1;2;2
+Locrian;1;2;2;1;2;2;2
+Major Pentatonic;2;2;3;2;3
+Minor Pentatonic;3;2;2;3;2
+△7th;4;3;4
+-7th;3;4;3
+7th;4;3;3
+Major Triad;4;3
+Minor Triad;3;4
+Diminished Triad;3;3
+Chromatic;1;1;1;1;1;1;1;1;1;1;1;1
+Root Only

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="720.0" maxWidth="1080.0" minHeight="720.0" minWidth="1080.0" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guitar_fretboard.FretboardController">
+   <children>
+      <MenuBar>
+        <menus>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
+                <MenuItem fx:id="openMidiItem" mnemonicParsing="false" onAction="#openMIDIFile" text="Open MIDI File" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="tuningMenuOpt" mnemonicParsing="false" onAction="#showTuningPane" text="Tuning" />
+                  <MenuItem mnemonicParsing="false" text="Colors" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Canvas fx:id="fretCanvas" height="476.0" width="1081.0" />
+      <Separator prefWidth="200.0" />
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="172.0" prefWidth="1080.0" VBox.vgrow="NEVER">
+               <children>
+                  <VBox maxWidth="200.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Scale Select" underline="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Scale Type">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ChoiceBox fx:id="scaleSelector" maxWidth="1.7976931348623157E308" prefWidth="150.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ChoiceBox>
+                        <Label maxWidth="1.7976931348623157E308" text="Root Note">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ChoiceBox fx:id="rootSelector" maxWidth="1.7976931348623157E308" prefWidth="150.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ChoiceBox>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox prefHeight="172.0" prefWidth="123.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Note Display" underline="true">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="intervalDisplayOpt" mnemonicParsing="false" selected="true" text="Interval">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="note_display_group" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="nameDisplayOpt" mnemonicParsing="false" text="Note Name" toggleGroup="$note_display_group">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox prefHeight="172.0" prefWidth="309.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Frets" underline="true">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <RadioButton fx:id="standardFret" mnemonicParsing="false" onAction="#fretOptionSelect" prefHeight="17.0" prefWidth="127.0" selected="true" text="First 12 Frets" HBox.hgrow="ALWAYS">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="fret_group" />
+                                 </toggleGroup>
+                                 <HBox.margin>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </HBox.margin>
+                              </RadioButton>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                              <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <RadioButton fx:id="fullNeckFrets" mnemonicParsing="false" onAction="#fretOptionSelect" text="Full Neck" toggleGroup="$fret_group">
+                                       <VBox.margin>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </VBox.margin>
+                                    </RadioButton>
+                                    <TextField fx:id="neckLength" disable="true" promptText="Number of Frets">
+                                       <VBox.margin>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                              <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <RadioButton fx:id="rangeFretSelect" mnemonicParsing="false" onAction="#fretOptionSelect" text="Range of Frets" toggleGroup="$fret_group">
+                                       <VBox.margin>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </VBox.margin>
+                                    </RadioButton>
+                                    <GridPane alignment="CENTER" hgap="8.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label fx:id="fretRangeStartLabel" disable="true" text="Start Fret" />
+                                          <Label fx:id="fretRangeEndLabel" disable="true" text="End Fret" GridPane.columnIndex="1" />
+                                          <TextField fx:id="fretRangeStart" disable="true" promptText="First Fret" GridPane.rowIndex="1" />
+                                          <TextField fx:id="fretRangeEnd" disable="true" promptText="Last Fret" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </VBox.margin>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <Button fx:id="generateButton" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#drawResults" text="Generate">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</VBox>
